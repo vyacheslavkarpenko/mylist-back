@@ -10,39 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_09_211117) do
+ActiveRecord::Schema.define(version: 2019_02_16_164829) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bests", force: :cascade do |t|
+    t.string "best"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "comments", force: :cascade do |t|
     t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "items", force: :cascade do |t|
-    t.integer "type"
-    t.string "name"
-    t.text "excerpt"
-    t.text "description"
-    t.string "url"
-    t.integer "upvotes"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "job_id"
+    t.index ["job_id"], name: "index_comments_on_job_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "jobs", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_jobs_on_user_id"
   end
 
-  create_table "lists", force: :cascade do |t|
-    t.string "title"
-    t.text "excerpt"
-    t.text "description"
-    t.integer "upvotes"
+  create_table "nests", force: :cascade do |t|
+    t.string "nest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -51,17 +49,24 @@ ActiveRecord::Schema.define(version: 2019_02_09_211117) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-  end
-
-  create_table "stories", force: :cascade do |t|
-    t.string "title"
-    t.text "content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.bigint "job_id"
+    t.bigint "user_id"
+    t.index ["job_id"], name: "index_parts_on_job_id"
+    t.index ["user_id"], name: "index_parts_on_user_id"
   end
 
   create_table "tasks", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "job_id"
+    t.index ["job_id"], name: "index_tasks_on_job_id"
+    t.index ["user_id"], name: "index_tasks_on_user_id"
+  end
+
+  create_table "tests", force: :cascade do |t|
+    t.string "test"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -72,4 +77,11 @@ ActiveRecord::Schema.define(version: 2019_02_09_211117) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "comments", "jobs"
+  add_foreign_key "comments", "users"
+  add_foreign_key "jobs", "users"
+  add_foreign_key "parts", "jobs"
+  add_foreign_key "parts", "users"
+  add_foreign_key "tasks", "jobs"
+  add_foreign_key "tasks", "users"
 end
