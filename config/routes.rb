@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  scope module: 'api', shallow: true  do
+  scope module: 'api', shallow: true do
     scope module: 'v1', as: 'v1' do
       resources :users do
         resources :jobs do

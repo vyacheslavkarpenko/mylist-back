@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_02_16_164829) do
+ActiveRecord::Schema.define(version: 2019_02_16_213314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,7 +27,11 @@ ActiveRecord::Schema.define(version: 2019_02_16_164829) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "job_id"
+    t.bigint "part_id"
+    t.bigint "task_id"
     t.index ["job_id"], name: "index_comments_on_job_id"
+    t.index ["part_id"], name: "index_comments_on_part_id"
+    t.index ["task_id"], name: "index_comments_on_task_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
@@ -61,7 +65,9 @@ ActiveRecord::Schema.define(version: 2019_02_16_164829) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.bigint "job_id"
+    t.bigint "part_id"
     t.index ["job_id"], name: "index_tasks_on_job_id"
+    t.index ["part_id"], name: "index_tasks_on_part_id"
     t.index ["user_id"], name: "index_tasks_on_user_id"
   end
 
@@ -78,10 +84,13 @@ ActiveRecord::Schema.define(version: 2019_02_16_164829) do
   end
 
   add_foreign_key "comments", "jobs"
+  add_foreign_key "comments", "parts"
+  add_foreign_key "comments", "tasks"
   add_foreign_key "comments", "users"
   add_foreign_key "jobs", "users"
   add_foreign_key "parts", "jobs"
   add_foreign_key "parts", "users"
   add_foreign_key "tasks", "jobs"
+  add_foreign_key "tasks", "parts"
   add_foreign_key "tasks", "users"
 end
