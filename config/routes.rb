@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   #   end
   # end
 
-  scope module: 'api', shallow: true do
+  scope module: 'api' do
     scope module: 'v1', as: 'v1' do
-      resources :users do
+      resources :users, shallow: true do
         resources :jobs do
           resources :parts do
             resources :tasks do
@@ -23,6 +23,6 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'api/v1/jobs#index'
+  root 'api/v1/users#index'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

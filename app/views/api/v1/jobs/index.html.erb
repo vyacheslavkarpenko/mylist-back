@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Jobs</h1>
-
+<%= link_to 'Parts', v1_job_parts_path(1) %> 
 <table>
   <thead>
     <tr>
@@ -14,9 +14,9 @@
     <% @jobs.each do |job| %>
       <tr>
         <td><%= job.name %></td>
-        <td><%= link_to 'Show', job %></td>
-        <td><%= link_to 'Edit', edit_job_path(job) %></td>
-        <td><%= link_to 'Destroy', job, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', v1_job_path(job) %></td>
+        <td><%= link_to 'Edit', edit_v1_job_path(job) %></td>
+        <td><%= link_to 'Destroy', v1_job_path(job), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +24,4 @@
 
 <br>
 
-<%= link_to 'New Job', new_job_path %>
+<%= link_to 'New Job', new_v1_user_job_path(1) %>
