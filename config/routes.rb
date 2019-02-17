@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   # end
 
   scope module: 'api' do
-    scope module: 'v1', as: 'v1' do
+    scope module: 'v1' do
       resources :users, shallow: true do
         resources :jobs do
           resources :parts do
