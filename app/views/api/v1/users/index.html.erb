@@ -1,7 +1,7 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Users</h1>
-<%= link_to 'Jobs', v1_user_jobs_path(1) %> 
+<%= link_to 'Jobs', user_jobs_path(1) %> 
 
 <table>
   <thead>
@@ -15,9 +15,9 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.email %></td>
-        <td><%= link_to 'Show', v1_user_path(user) %></td>
-        <td><%= link_to 'Edit', edit_v1_user_path(user) %></td>
-        <td><%= link_to 'Destroy', v1_user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Show', user_path(user) %></td>
+        <td><%= link_to 'Edit', edit_user_path(user) %></td>
+        <td><%= link_to 'Destroy', user_path(user), method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -25,4 +25,4 @@
 
 <br>
 
-<%= link_to 'New User', new_v1_user_path %> 
+<%= link_to 'New User', new_user_path %> 
