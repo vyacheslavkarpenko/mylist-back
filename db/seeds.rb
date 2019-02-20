@@ -1,7 +1,7 @@
 u1  = User.create(
   name: 'slava1',
-  email: '1@1',
-  password: '1',
+  email: 'slava@gmail.com',
+  password: '123456',
   avatar: '' )
 
 j1 = Job.create(

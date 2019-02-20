@@ -1,0 +1,21 @@
+<h3>Login</h3>
+<%= form_with url: create_session_path do |form| %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+
+  <div class="field">
+     <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div class="field">
+    <%= link_to  "Forgot password?" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit 'Login'%>
+  </div>
+<% end %>
