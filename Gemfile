@@ -5,6 +5,7 @@ ruby '2.5.1'
 gem 'bcrypt', '~> 3.1.7'
 gem 'pry'
 gem 'carrierwave', '~> 1.0'
+gem 'sendgrid-ruby'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.2'

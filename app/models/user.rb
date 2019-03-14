@@ -8,6 +8,8 @@ class User < ApplicationRecord
 
   validates :name, presence: true
   validates :email, uniqueness: true, presence: true
+  validates :email, format: { with: /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i,
+    message: "Wromg email format" }
   validates :password, presence: true, length: { minimum: 8, maximum: 64 }
 
   mount_uploader :avatar, AvatarUploader

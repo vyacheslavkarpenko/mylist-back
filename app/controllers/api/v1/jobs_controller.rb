@@ -7,6 +7,11 @@ module Api
       # GET /jobs.json
       def index
         @jobs = Job.all
+        p "current_user.id = #{current_user.id}"
+        p "current_user new job = #{current_user.jobs.new}"
+        p "new job = #{Job.new}"
+
+
       end
 
       # GET /jobs/1
@@ -16,7 +21,9 @@ module Api
 
       # GET /jobs/new
       def new
-        @job = Job.new
+        
+        # @job = Job.new
+        @job = current_user.jobs.new
       end
 
       # GET /jobs/1/edit

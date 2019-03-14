@@ -1,7 +1,7 @@
 module Api
   module V1
     class SessionsController < ApplicationController
-      before_action :require_login, except: %i[login create new]
+      before_action :require_login, except: %i[login create new recover_password]
       def new; end
 
       def create
@@ -18,6 +18,12 @@ module Api
       def logout
         reset_session
         redirect_to root_url
+      end
+
+      def recover_password
+        
+        binding.pry
+        
       end
     end
   end

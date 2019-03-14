@@ -29,4 +29,4 @@ Comment.create(
   part_id: p1.id,
   task_id: t1.id
 )
-# rails db:drop db:create db:migrate db:seed
+#rdr
