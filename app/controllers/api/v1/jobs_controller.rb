@@ -23,6 +23,7 @@ module Api
       def new
         
         # @job = Job.new
+        @current_user = current_user
         @job = current_user.jobs.new
       end
 
