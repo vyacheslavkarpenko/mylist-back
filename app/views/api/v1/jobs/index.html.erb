@@ -14,6 +14,7 @@
     <% @jobs.each do |job| %>
       <tr>
         <td><%= job.name %></td>
+        <td><%= link_to 'Parts', job_parts_path(job) %></td>
         <td><%= link_to 'Show', job_path(job) %></td>
         <td><%= link_to 'Edit', edit_job_path(job) %></td>
         <td><%= link_to 'Destroy', job_path(job), method: :delete, data: { confirm: 'Are you sure?' } %></td>

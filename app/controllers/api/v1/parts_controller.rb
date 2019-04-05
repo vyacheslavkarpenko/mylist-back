@@ -16,7 +16,10 @@ module Api
 
       # GET /parts/new
       def new
-        @part = Part.new
+        # @part = Part.new
+        # @current_user = current_user
+        @current_job = params[:job_id]
+        @part = current_user.parts.new
       end
 
       # GET /parts/1/edit

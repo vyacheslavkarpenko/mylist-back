@@ -34,7 +34,8 @@ module Api
       # POST /jobs
       # POST /jobs.json
       def create
-        @job = Job.new(job_params)
+        @current_user = current_user
+        @job = current_user.jobs.new(job_params)
 
         respond_to do |format|
           if @job.save
@@ -66,7 +67,7 @@ module Api
       def destroy
         @job.destroy
         respond_to do |format|
-          format.html { redirect_to jobs_url, notice: 'Job was successfully destroyed.' }
+          format.html { redirect_to user_jobs_url(current_user), notice: 'Job was successfully destroyed.' }
           format.json { head :no_content }
         end
       end
@@ -79,7 +80,7 @@ module Api
 
         # Never trust parameters from the scary internet, only allow the white list through.
         def job_params
-          params.require(:job).permit(:name)
+          params.require(:job).permit(:name, :user_id)
         end
     end
   end
