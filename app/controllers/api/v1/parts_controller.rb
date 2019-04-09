@@ -6,7 +6,11 @@ module Api
       # GET /parts
       # GET /parts.json
       def index
-        @parts = Part.all
+        @parts = Part.find_by(id: params[:job_id])
+        @current_user = current_user
+        puts '-------------------------@current_user---------------------------------'.red
+        puts "#{@current_user.id}".green
+        puts '-------------------------/@current_user---------------------------------'.red
       end
 
       # GET /parts/1
@@ -17,9 +21,17 @@ module Api
       # GET /parts/new
       def new
         # @part = Part.new
-        # @current_user = current_user
-        @current_job = params[:job_id]
-        @part = current_user.parts.new
+        @current_user = current_user
+
+        @current_job = Job.find(params[:job_id])
+        puts '-------------------------@current_job---------------------------------'.red
+        puts "#{@current_job.id }".green
+        puts '-------------------------/@current_job---------------------------------'.red
+
+        @part = @current_job.parts.new
+        puts '-------------------------@part---------------------------------'.red
+        puts "#{@part}".green
+        puts '-------------------------/@part---------------------------------'.red
       end
 
       # GET /parts/1/edit
@@ -29,8 +41,10 @@ module Api
       # POST /parts
       # POST /parts.json
       def create
-        @part = Part.new(part_params)
-
+        @current_user = current_user
+        @current_job = Job.find(params[:job_id])
+        @part = @current_job.parts.new(part_params)
+        
         respond_to do |format|
           if @part.save
             format.html { redirect_to @part, notice: 'Part was successfully created.' }
@@ -74,7 +88,7 @@ module Api
 
         # Never trust parameters from the scary internet, only allow the white list through.
         def part_params
-          params.require(:part).permit(:name)
+          params.require(:part).permit(:name, :user_id, :job_id)
         end
     end
   end
