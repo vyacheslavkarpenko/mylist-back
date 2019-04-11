@@ -6,7 +6,7 @@ module Api
       # GET /parts
       # GET /parts.json
       def index
-        @parts = Part.find_by(id: params[:job_id])
+        @parts = Part.where(job_id: params[:job_id])
         @current_user = current_user
         puts '-------------------------@current_user---------------------------------'.red
         puts "#{@current_user.id}".green

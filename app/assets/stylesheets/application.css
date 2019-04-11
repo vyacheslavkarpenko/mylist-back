@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+
+ header {
+  background-color: rgb(253, 184, 216);
+  float: left;
+  width: 100%;
+  height: 70px
+ }
+.navs_jobs {
+  background-color: rgb(184, 253, 184);
+  float: left;
+  width: 15%;
+  height: 700px;
+}
+.navs_parts {
+  background-color: rgb(149, 213, 221);
+  float: left;
+  width: 15%;
+  height: 700px;
+}
+.navs_tasks {
+  background-color: rgb(255, 255, 214);
+  float: left;
+  width: 15%;
+  height: 700px;
+}
+.layout_yeld {
+  background-color: rgb(187, 187, 219);
+  float: left;
+  width: 55%;
+  height: 700px;
+}
+footer {
+  background-color: rgb(240, 155, 155);
+  position: absolute;
+  /* left: 0; */
+  bottom: 0;
+  width: 100%;
+  height: 80px;
+}

@@ -19,7 +19,24 @@
         <%= render  template: 'layouts/navs/session_nav' %>
       </nav>
     </header>
-    <%= yield %>
+    <div class='navs_jobs'>
+      <%= render  template: 'layouts/navs/jobs' %>
+    </div>
+
+    <div class='navs_parts'>
+      <%= render  template: 'layouts/navs/parts' %>
+    </div>
+
+    <div class='navs_tasks'>
+      <%= render  template: 'layouts/navs/tasks' %>
+    </div>
+
+    <div class='layout_yeld'>
+      <%= yield %>
+    </div>
+    <footer>
+      footer
+    </footer>
   </body>
 </html>
 
