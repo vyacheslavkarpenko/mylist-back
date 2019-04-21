@@ -11,9 +11,9 @@
 
   <body>
     <header>
+      <%= render  template: 'layouts/navs/main' %>
       <%= render  template: 'layouts/navs/user_data' %>
       <%= render  template: 'layouts/navs/session' %>
-      <%= render  template: 'layouts/navs/main' %>
     </header>
 
     <%- if current_user %>

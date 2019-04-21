@@ -22,14 +22,26 @@ body {
   background-color: rgb(253, 184, 216);
   float: left;
   width: 100%;
-  height: 70px;
+  height: 40px;
  }
  .main {
-   background-color: brown;
-   width: 60%;
+   background-color: rgb(243, 209, 209);
    float: left;
+   width: 60%;
+   height: 30px;
  } 
-
+ .user_data {
+   background-color: cadetblue;
+   float: left;
+   width: 20%;
+   height: 30px
+ }
+ .session {
+   background-color: darkgrey;
+   float: left;
+   width: 20%;
+   height: 30px
+ }
  .welcome {
    background-color: beige;
    float: left;
@@ -62,8 +74,7 @@ body {
 }
 footer {
   background-color: rgb(240, 155, 155);
-  position: fixed;
-  bottom: 0%;
-  width: 90%;
-  height: 80px;
+  float: left;
+  width: 100%;
+  height: 60px;
 }
