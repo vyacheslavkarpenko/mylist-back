@@ -11,19 +11,19 @@
 
   <body>
     <header>
-      <nav>
-        <%= link_to "This on git", 'https://github.com/keyhit/mylist-back' %>
-        <%= render  template: 'layouts/navs/user_data' %>
-      </nav>
-      <nav>
-        <%= render  template: 'layouts/navs/session_nav' %>
-        <%= render  template: 'layouts/navs/main' %>
-      </nav>
+      <%= render  template: 'layouts/navs/user_data' %>
+      <%= render  template: 'layouts/navs/session' %>
+      <%= render  template: 'layouts/navs/main' %>
     </header>
+
+    <%- if current_user %>
       <%= render  template: 'layouts/navs/jptc/jptc_collector' %>
-      <div class='layout_yeld'>
-        <%= yield %>
-      </div>
+    <%- else %>
+      <%= render  template: 'layouts/navs/welcome' %>
+    <% end %>
+    <div class='layout_yeld'>
+      <%= yield %>
+    </div>
     <footer>
       footer
     </footer>

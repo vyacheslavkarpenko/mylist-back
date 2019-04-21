@@ -1,6 +1,5 @@
-<ul>
+<div class="user_data">
   <% if current_user %>
-    <li><%= current_user.name %></li>
-    <li><%= current_user.id %></li>
+    <%= current_user.name %> | <%= current_user.id %>
   <% end %>
-</ul>
+  </div>
