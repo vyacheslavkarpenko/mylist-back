@@ -1,10 +1,10 @@
 u1  = User.create(
   name: 'slava1',
   email: 'slava@gmail.com',
-  password: '123456',
+  password: '12345678',
   avatar: '' )
 
-j1 = Job.create(
+j1 = u1.jobs.create(
   name: 'Job 1',
   user_id: u1.id
 )

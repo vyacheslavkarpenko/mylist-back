@@ -1,2 +1,8 @@
 <h4>JOBS</h4>
 all | finished | in progress | time mised | delayed | canceled | planed
+<hr>
+<%- current_user.jobs.each do |job| %>
+  <section>
+    <%= job.name %>
+  </section>
+<% end %>
