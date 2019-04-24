@@ -1,8 +1,11 @@
 <h4>PARTS</h4> 
 all | finished | in progress | time mised | delayed | canceled | planed
 <hr>
-<%- current_user.parts.each do |part| %>
-  <section>
-    <%= part.name %>
-  </section>
+<%- current_user.jobs.each do |job|%>
+  <b><%= link_to job.name, job_path(job.id) %></b>
+  <%- job.parts.each do |part| %>
+    <section>
+      <%= link_to part.name, part_path(part.id) %>
+    </section>
+  <% end %>
 <% end %>
