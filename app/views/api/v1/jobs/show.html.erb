@@ -3,6 +3,7 @@
   <strong>Name:</strong>
   <%= @job.name %>
 </p>
+<%= link_to 'Parts', job_parts_path(job_id) if job_id %> |
 <%= link_to 'New parts', new_job_part_path(@job.id) %> |
 <%= link_to 'Edit', edit_job_path(@job) %> |
 <%= link_to 'Back', user_jobs_path(current_user) %>

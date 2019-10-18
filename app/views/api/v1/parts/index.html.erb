@@ -10,8 +10,6 @@
   </thead>
 
   <tbody>
-  <%= render  template: 'layouts/navs/jptc/jptc_collector' %>
-
     <%- if @parts %>
       <% @parts.each do |part| %>
         <tr>
@@ -27,4 +25,5 @@
 
 <br>
 
-<%= link_to 'New Part', new_job_part_url(params[:job_id]) %>
+<%= link_to 'New Part', new_job_part_url(params[:job_id]) %> |
+<%= link_to  "Parts", job_parts_path(parts_job_id) if parts_job_id %>
