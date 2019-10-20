@@ -10,42 +10,12 @@
   </head>
 
   <body>
-    <%#= render  template: 'layouts/rest' %>
-    <%#= render  "rest", rest: @rest %>
     <header>
       <%= render  template: 'layouts/navs/main' %>
       <%= render  template: 'layouts/navs/user_data' %>
       <%= render  template: 'layouts/navs/session' %>
     </header>
-    <%= params %>
-      <%= link_to  "jobs", user_jobs_path(user_id) %>
-      <%= link_to  "parts", job_parts_path(job_id) if job_id %>
-      <%= link_to  "parts", job_parts_path(parts_job_id) if parts_job_id %>
 
-  <%
-=begin%>
- <%- if current_user %>
-    <div>
-      <%= link_to  "parts", job_parts_path(job_id) if job_id %>
-      <%= link_to  "tasks", part_tasks_path(part_id) if part_id %>
-      <%= link_to  "comments", task_comments_path(task_id) if task_id %>
-      <%= job_id %>
-      <%= params %>
-
-    </div>
-  <% end %> 
-<%
-=end%>
-
-    <%
-=begin%>
- <%- if current_user %>
-      <%= render  template: 'layouts/navs/jptc/jptc_collector' %>
-    <%- else %>
-      <%= render  template: 'layouts/navs/welcome' %>
-    <% end %> 
-<%
-=end%>
     <div class='layout_yeld'>
       <%= yield %>
     </div>

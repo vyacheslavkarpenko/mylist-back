@@ -10,7 +10,7 @@ module Api
         if @user && @user.authenticate(params[:password])
           session[:user_id] = @user.id
           # redirect_to root_path(session[:user_id]), notice: 'You logged in!' # old
-          redirect_to user_jobs_path(uid), notice: 'You logged in!' # new
+          redirect_to user_jobs_path(user_id), notice: 'You logged in!' # new
         else
           redirect_to new_session_path
         end

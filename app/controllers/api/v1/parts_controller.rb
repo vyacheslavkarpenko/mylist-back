@@ -2,35 +2,24 @@ module Api
   module V1
     class PartsController < ApplicationController
       before_action :set_part, only: [:show, :edit, :update, :destroy]
+      before_action :set_job_id, only: [:show, :edit, :update, :destroy]
 
       # GET /parts
       # GET /parts.json
       def index
         @parts = Part.where(job_id: params[:job_id])
-        puts '-------------------------@current_user---------------------------------'.red
-        puts "#{params}".green
-        puts '-------------------------/@current_user---------------------------------'.red
+        @job_id = params[:job_id]
       end
 
       # GET /parts/1
       # GET /parts/1.json
       def show
+        @job_id = @part.job.id
       end
 
       # GET /parts/new
       def new
-        # @part = Part.new
-        @current_user = current_user
-
-        @current_job = Job.find(params[:job_id])
-        puts '-------------------------@current_job---------------------------------'.red
-        puts "#{@current_job.id }".green
-        puts '-------------------------/@current_job---------------------------------'.red
-
-        @part = @current_job.parts.new
-        puts '-------------------------@part---------------------------------'.red
-        puts "#{@part}".green
-        puts '-------------------------/@part---------------------------------'.red
+        @part = Part.new(job_id: params[:job_id])
       end
 
       # GET /parts/1/edit
@@ -40,9 +29,7 @@ module Api
       # POST /parts
       # POST /parts.json
       def create
-        @current_user = current_user
-        @current_job = Job.find(params[:job_id])
-        @part = @current_job.parts.new(part_params)
+        @part = Part.new(part_params)
         
         respond_to do |format|
           if @part.save
@@ -85,9 +72,12 @@ module Api
           @part = Part.find(params[:id])
         end
 
+        def set_job_id
+          @job_id = @part.job.id
+        end
         # Never trust parameters from the scary internet, only allow the white list through.
         def part_params
-          params.require(:part).permit(:name, :user_id, :job_id)
+          params.require(:part).permit(:name,).merge(user_id: current_user.id, job_id: params[:job_id])
         end
     end
   end

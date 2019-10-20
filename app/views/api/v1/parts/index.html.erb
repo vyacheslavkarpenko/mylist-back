@@ -14,7 +14,7 @@
       <% @parts.each do |part| %>
         <tr>
           <td><%= part.name %></td>
-          <td><%= link_to 'Show', part_path(part) %></td>
+          <td><%= link_to 'Detail', part_path(part) %></td>
           <td><%= link_to 'Edit', edit_part_path(part) %></td>
           <td><%= link_to 'Destroy', part_path(part), method: :delete, data: { confirm: 'Are you sure?' } %></td>
         </tr>
@@ -25,5 +25,5 @@
 
 <br>
 
+<%= link_to 'Job', job_url(@job_id) %> |
 <%= link_to 'New Part', new_job_part_url(params[:job_id]) %> |
-<%= link_to  "Parts", job_parts_path(parts_job_id) if parts_job_id %>

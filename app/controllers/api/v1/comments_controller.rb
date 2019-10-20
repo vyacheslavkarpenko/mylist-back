@@ -6,7 +6,7 @@ module Api
       # GET /comments
       # GET /comments.json
       def index
-        @comments = Comment.all
+        @comments = Comment.where(task_id: params[:task_id])
       end
 
       # GET /comments/1
