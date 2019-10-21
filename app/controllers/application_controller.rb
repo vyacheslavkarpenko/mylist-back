@@ -29,6 +29,9 @@ class ApplicationController < ActionController::Base
   end
   helper_method :user_id
 
+  def current_job
+      
+  end
   # def job_id
   #   if  params[:controller] == 'api/v1/jobs' && params[:action] == 'show'
   #     @job_id = params[:id]

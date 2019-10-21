@@ -16,7 +16,8 @@ module Api
 
       # GET /tasks/new
       def new
-        @task = Task.new
+        @part = Job.find(params[:part_id])
+        @task =[@part, @part.parts.build]
       end
 
       # GET /tasks/1/edit
