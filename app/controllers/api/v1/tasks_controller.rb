@@ -12,12 +12,13 @@ module Api
       # GET /tasks/1
       # GET /tasks/1.json
       def show
+        @part_id = @task.part_id
       end
 
       # GET /tasks/new
       def new
-        @part = Job.find(params[:part_id])
-        @task =[@part, @part.parts.build]
+        part = Part.find(params[:part_id])
+        @part_task = [part, part.tasks.build]
       end
 
       # GET /tasks/1/edit
@@ -27,8 +28,8 @@ module Api
       # POST /tasks
       # POST /tasks.json
       def create
-        @task = Task.new(task_params)
-
+        part = Part.find(params[:part_id])
+        @task = Task.new(task_params.merge(user_id: current_user.id, job_id: part.job_id, part_id: params[:part_id]))
         respond_to do |format|
           if @task.save
             format.html { redirect_to @task, notice: 'Task was successfully created.' }
@@ -59,7 +60,7 @@ module Api
       def destroy
         @task.destroy
         respond_to do |format|
-          format.html { redirect_to tasks_url, notice: 'Task was successfully destroyed.' }
+          format.html { redirect_to part_tasks_url(@task.part_id), notice: 'Task was successfully destroyed.' }
           format.json { head :no_content }
         end
       end
