@@ -7,6 +7,8 @@ module Api
       # GET /comments.json
       def index
         @comments = Comment.where(task_id: params[:task_id])
+        task = Task.find(params[:task_id])
+        @comment = [task, task.comments.build]
       end
 
       # GET /comments/1
@@ -34,7 +36,7 @@ module Api
 
         respond_to do |format|
           if @comment.save
-            format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
+            format.html { redirect_to task_comments_url(@comment.task), notice: 'Comment was successfully created.' }
             format.json { render :show, status: :created, location: @comment }
           else
             format.html { render :new }
