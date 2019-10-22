@@ -1,3 +1,7 @@
+<%= link_to 'Parts', job_parts_path(@job_id) %> |
+<%= link_to 'Tasks', part_tasks_path(params[:id]) %> |
+<%= link_to 'Edit', edit_part_path(@part) %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -5,6 +9,4 @@
   <%= @part.name %>
 </p>
 
-<%= link_to 'Parts', job_parts_path(@job_id) %> |
-<%= link_to 'Tasks', part_tasks_path(params[:id]) %> |
-<%= link_to 'Edit', edit_part_path(@part) %>
+

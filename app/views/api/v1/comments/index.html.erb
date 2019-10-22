@@ -1,3 +1,5 @@
+<%= link_to 'Task', task_path(params[:task_id]) %>
+
 <p id="notice"><%= notice %></p>
 
 <h1>Comments</h1>
@@ -14,7 +16,7 @@
     <% @comments.each do |comment| %>
       <tr>
         <td><%= comment.text %></td>
-        <td><%= link_to 'Show', comment %></td>
+        <td><%= link_to 'Detail', comment %></td>
         <td><%= link_to 'Edit', edit_comment_path(comment) %></td>
         <td><%= link_to 'Destroy', comment, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
@@ -23,5 +25,5 @@
 </table>
 
 <br>
-<%= link_to 'Task', task_path(params[:task_id]) %> |
+
 <%= link_to 'New Comment', new_task_comment_path %>

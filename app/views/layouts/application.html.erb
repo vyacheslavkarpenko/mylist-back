@@ -15,12 +15,17 @@
       <%= render  template: 'layouts/navs/user_data' %>
       <%= render  template: 'layouts/navs/session' %>
     </header>
-
+    <div class="previos_data">
+      previos
+    </div>
     <div class='layout_yeld'>
       <%= yield %>
     </div>
+    <div class="next_data">
+    next
+    </div>
     <footer>
-      footer
+      <%= Api::V1::FooterController.date %>
     </footer>
   </body>
 </html>

@@ -1,3 +1,6 @@
+<%= link_to 'Tasks', part_tasks_path(@part_id) %>
+<%= link_to 'Comments', task_comments_path(params[:id]) %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -5,6 +8,4 @@
   <%= @task.name %>
 </p>
 
-<%= link_to 'Tasks', part_tasks_path(@part_id) %> |
-<%= link_to 'Comments', task_comments_path(params[:id]) %> |
-<%= link_to 'Edit', edit_task_path(@task) %> |
+<%= link_to 'Edit', edit_task_path(@task) %>

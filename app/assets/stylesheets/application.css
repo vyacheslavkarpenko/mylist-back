@@ -66,10 +66,22 @@ body {
   width: 15%;
   height: 700px;
 }
+.previos_data{
+  background-color: rgb(151, 151, 155);
+  float: left;
+  width: 20%;
+  height: 700px;
+}
 .layout_yeld {
   background-color: rgb(187, 187, 219);
   float: left;
-  width: 55%;
+  width: 60%;
+  height: 700px;
+}
+.next_data{
+  background-color: rgb(151, 151, 155);
+  float: left;
+  width: 20%;
   height: 700px;
 }
 footer {

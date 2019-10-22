@@ -1,3 +1,5 @@
+<%= link_to 'Comments', task_comments_path(@comment.task_id) %>
+
 <p id="notice"><%= notice %></p>
 
 <p>
@@ -5,5 +7,4 @@
   <%= @comment.text %>
 </p>
 
-<%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Comments', task_comments_path(@comment.task_id) %>
+<%= link_to 'Edit', edit_comment_path(@comment) %>
