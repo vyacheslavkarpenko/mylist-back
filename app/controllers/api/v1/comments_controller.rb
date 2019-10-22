@@ -16,7 +16,8 @@ module Api
 
       # GET /comments/new
       def new
-        @comment = Comment.new
+        task = Task.find(params[:task_id])
+        @comment = [task, task.comments.build]
       end
 
       # GET /comments/1/edit
@@ -26,7 +27,10 @@ module Api
       # POST /comments
       # POST /comments.json
       def create
-        @comment = Comment.new(comment_params)
+        # binding.pry
+        task = Task.find(params[:task_id])
+        @comment = Comment.new(comment_params
+          .merge(user_id: current_user.id, job_id: task.job_id, part_id: task.part_id, task_id: task.id))
 
         respond_to do |format|
           if @comment.save
@@ -58,7 +62,7 @@ module Api
       def destroy
         @comment.destroy
         respond_to do |format|
-          format.html { redirect_to comments_url, notice: 'Comment was successfully destroyed.' }
+          format.html { redirect_to task_comments_url(@comment.task), notice: 'Comment was successfully destroyed.' }
           format.json { head :no_content }
         end
       end

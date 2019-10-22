@@ -6,4 +6,4 @@
 </p>
 
 <%= link_to 'Edit', edit_comment_path(@comment) %> |
-<%= link_to 'Comments', task_comments_path(params[:id]) %>
+<%= link_to 'Comments', task_comments_path(@comment.task_id) %>
